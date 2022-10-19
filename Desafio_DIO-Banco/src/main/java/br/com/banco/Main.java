@@ -27,7 +27,7 @@ public class Main {
               banco.addCliente(ui[0], ui[1], ui[2]);
               System.out.println("Conta inserida com sucesso!!!");
             } else {
-              banco.addCliente(ui[0], ui[1], ui[2], Double.parseDouble(ui[3]));
+              banco.addClienteSaldo(ui[0], ui[1], ui[2], Double.parseDouble(ui[3]));
               System.out.println("Conta inserida com sucesso!!!");
             }
           } else

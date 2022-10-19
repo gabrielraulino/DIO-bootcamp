@@ -36,7 +36,7 @@ public class Banco {
    * @param tipo
    * @param saldo
    */
-  public void addCliente(String nome, String CPF, @NotNull String tipo, double saldo) {
+  public void addClienteSaldo(String nome, String CPF, @NotNull String tipo, double saldo) {
     if (tipo.equals("cc")) {
       contas.add(new ContaCorrente(agencia, new Cliente(nome, CPF), saldo));
     }
