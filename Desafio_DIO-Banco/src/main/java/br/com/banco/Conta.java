@@ -35,6 +35,7 @@ public abstract class Conta {
 
   public void deposita(double valor) {
     saldo += valor;
+    System.out.println("Depósito realizado com sucesso!!");
   }
 
   public double saca(double valor) {
@@ -59,11 +60,11 @@ public abstract class Conta {
   }
 
   protected void extrato() {
-    System.out.println(String.format("Nome: %s", titular.getNome()));
-    System.out.println(String.format("CPF: %s", titular.getCpf()));
-    System.out.println(String.format("Agencia %d", agencia));
-    System.out.println(String.format("Numero %d", numero));
-    System.out.println(String.format("Saldo %.2f", saldo));
+    System.out.printf("Nome: %s%n", titular.getNome());
+    System.out.printf("CPF: %s%n", titular.getCpf());
+    System.out.printf("Agencia %d%n", agencia);
+    System.out.printf("Numero %d%n", numero);
+    System.out.printf("Saldo %.2f%n", saldo);
 
   }
 }
