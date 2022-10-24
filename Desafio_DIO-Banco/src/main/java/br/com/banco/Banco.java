@@ -5,8 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class Banco {
-  private int agencia;
-  private ArrayList<Conta> contas = new ArrayList<>();
+  private final int agencia;
+  private final ArrayList<Conta> contas = new ArrayList<>();
 
   public Banco(int agencia) {
     this.agencia = agencia;
@@ -15,9 +15,9 @@ public class Banco {
   /**
    * Cliente sem o saldo
    *
-   * @param nome
-   * @param CPF
-   * @param tipo
+   * @param nome recebe o nome do cliente
+   * @param CPF  String que recebe o CPF do cliente
+   * @param tipo recebe dois caracteres que recebe o tipo da contra
    */
   public void addCliente(String nome, String CPF, @NotNull String tipo) {
     if (tipo.equals("cc")) {
@@ -31,10 +31,10 @@ public class Banco {
   /**
    * Cliente com o saldo
    *
-   * @param nome
-   * @param CPF
-   * @param tipo
-   * @param saldo
+   * @param nome  recebe o nome do cliente
+   * @param CPF   recebe o CPF do cliente
+   * @param tipo  recbe dois caracteres que recebe o tipo da contra
+   * @param saldo recebe o saldo inicial do cliente
    */
   public void addClienteSaldo(String nome, String CPF, @NotNull String tipo, double saldo) {
     if (tipo.equals("cc")) {
@@ -46,17 +46,20 @@ public class Banco {
   }
 
   public Conta consulta(String nome) {
-    for (Conta conta : contas) {
-      if (conta.getTitular().getNome().equals(nome))
-        return conta;
+    try {
+      return contas
+          .stream()
+          .filter(e -> e.getTitular()
+          .getNome()
+          .equals(nome)).iterator()
+          .next();
+    } catch (NullPointerException e) {
+      return null;
     }
-    return null;
   }
 
   public void imprimeContas() {
-    for (Conta conta : contas) {
-      conta.extrato();
-    }
+    contas.forEach(Conta::infoClientes);
   }
 
   void excluiCliente(int num) {
@@ -66,12 +69,14 @@ public class Banco {
   }
 
   public Conta busca(int num) {
-    for (Conta conta : contas) {
-      if (conta.getNumero() == num)
-        return conta;
+    try {
+      return contas
+          .stream()
+          .filter(e -> e.getNumero() == num).iterator()
+          .next();
+    } catch (ArrayIndexOutOfBoundsException e) {
+      return null;
     }
-    System.out.println("conta não encontrada!!");
-    return null;
   }
 
   @Override
