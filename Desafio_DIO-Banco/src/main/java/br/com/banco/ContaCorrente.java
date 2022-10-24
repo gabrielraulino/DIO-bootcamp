@@ -12,8 +12,8 @@ public class ContaCorrente extends Conta {
   }
 
   @Override
-  public void extrato() {
+  public void infoClientes() {
     System.out.println("=== Conta Corrente ===");
-    super.extrato();
+    super.infoClientes();
   }
 }

@@ -10,8 +10,8 @@ public class ContaPoupanca extends Conta {
   }
 
   @Override
-  public void extrato() {
+  public void infoClientes() {
     System.out.println("=== Conta Poupanca ===");
-    super.extrato();
+    super.infoClientes();
   }
 }
