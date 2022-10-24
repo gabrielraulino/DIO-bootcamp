@@ -1,13 +1,8 @@
 package br.com.banco;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class Cliente {
-  private String nome;
-  private String cpf;
+  private final String nome;
+  private final String cpf;
 
   public String getNome() {
     return nome;
